@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a3c25014-9ce1-4c7a-8d69-d443af6874a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../notes/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/notes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/components/Note.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/components/Notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notes/src/services/notes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part3/backend/requests.rest" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1s1IxlMWUkxRFIvUarWjceVSYII" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a3c25014-9ce1-4c7a-8d69-d443af6874a1" name="Default Changelist" comment="" />
+      <created>1620033917578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620033917578</updated>
+      <workItem from="1620033919076" duration="2000" />
+    </task>
+    <servers />
+  </component>
+</project>

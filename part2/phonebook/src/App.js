@@ -36,36 +36,45 @@ const App = () => {
             name: newName,
             number: newNumber
         }
-        phonebookService.add(newPerson).then(returnedPerson => {
-            setPersons(persons.concat(returnedPerson))
-            notify(`Added ${newPerson.name}`, 'green')
-        })
+        phonebookService.add(newPerson)
+            .then(returnedPerson => {
+                setPersons(persons.concat(returnedPerson))
+                notify(`Added ${newPerson.name}`, 'green')
+            })
+            .catch(error => {
+                notify(error.message, 'red')
+            })
     }
 
     const updatePerson = (personToUpdate) => {
-        if (window.confirm(`update ${personToUpdate.name}'s number to ${newNumber}?`)) {
-            const newPerson = {
-                name: personToUpdate.name,
-                number: newNumber
-            }
-            phonebookService.update(newPerson, personToUpdate.id).then(updatedPerson => {
-                setPersons(persons.map(person => person.id !== personToUpdate.id ? person : updatedPerson))
-                notify(`Updated ${updatedPerson.name}`)
-            }).catch(() => {
-                notify(`${personToUpdate.name} was already deleted from phonebook`, 'red')
-                setPersons(persons.filter(person => person.id !== personToUpdate.id))
-            })
+        if (!window.confirm(`update ${personToUpdate.name}'s number to ${newNumber}?`)) {
+            return
         }
+        const update = { number: newNumber}
+        phonebookService.update(update, personToUpdate.id)
+            .then(updatedPerson => {
+                setPersons(persons.map(person => person.id !== personToUpdate.id ? person : updatedPerson))
+                notify(`Updated ${updatedPerson.name}`, 'green')
+            })
+            .catch(error => {
+                if (error.message === 'Not Found') {
+                    notify(`${personToUpdate.name} was already deleted from phonebook`, 'red')
+                    setPersons(persons.filter(person => person.id !== personToUpdate.id))
+                } else {
+                    notify(error.message, 'red')
+                }
+            })
     }
 
     const deletePerson =(personToDelete) => {
-        if (window.confirm(`do you want to delete ${personToDelete.name} from phonebook?`)) {
-            phonebookService._delete(personToDelete.id).then(() => {
-            }).catch(() => {
-                notify(`${personToDelete.name} was already deleted from phonebook`, 'red')
-            })
-            setPersons(persons.filter(person => person.id !== personToDelete.id))
+        if (!window.confirm(`do you want to delete ${personToDelete.name} from phonebook?`)) {
+            return
         }
+        phonebookService._delete(personToDelete.id).then(() => {
+        }).catch(() => {
+            notify(`${personToDelete.name} was already deleted from phonebook`, 'red')
+        })
+        setPersons(persons.filter(person => person.id !== personToDelete.id))
     }
 
     return (

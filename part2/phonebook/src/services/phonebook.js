@@ -1,25 +1,31 @@
 import axios from "axios";
-const baseURL = `http://localhost:3001/persons`
+const baseURL = `/api/persons`
 
 const getAll = () => {
-    const request = axios.get(baseURL).then(response => {
-        return response.data
-    })
-    return request
+    const request = axios.get(baseURL)
+    return request.then(response => response.data)
 }
 
 const add = (newObject) => {
-    const request = axios.post(baseURL, newObject).then(response => {
-        return response.data
-    })
+    const request = axios.post(baseURL, newObject)
     return request
+        .then(response => response.data)
+        .catch(error => {
+            throw new Error(error.response.data.error)
+        })
 }
 
-const update = (newObject, id) => {
-    const request = axios.put(`${baseURL}/${id}`, newObject).then(response => {
-        return response.data
-    })
+const update = (update, id) => {
+    const request = axios.put(`${baseURL}/${id}`, update)
     return request
+        .then(response => response.data)
+        .catch(error => {
+            if (error.response.status === 404) {
+                throw new Error('Not Found')
+            } else {
+                throw new Error(error.response.data.error)
+            }
+        })
 }
 
 const _delete = (id) => {
