@@ -37,7 +37,7 @@ app.get('/api/persons', (request, response) => {
 app.get('/info', (request, response) => {
   Person.count({}, (err, count) => {
     if (!err) {
-      response.send(<p>Phonebook has info for ${count} people</p>)
+      response.send(`<p>Phonebook has info for ${count} people</p>`)
     }
   })
 })
