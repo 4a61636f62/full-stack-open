@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const helper = require('./test_helper')
+const bcrypt = require('bcrypt')
 const api = supertest(app)
 
 const Blog = require('../models/blog')
+const User = require('../models/user')
 
 beforeEach(async () => {
   await Blog.deleteMany({})
@@ -13,6 +15,18 @@ beforeEach(async () => {
     .map(blog => new Blog(blog))
   const promiseArray = blogObjects.map(blog => blog.save())
   await Promise.all(promiseArray)
+
+  await User.deleteMany({})
+  const saltRounds = 10
+
+  const passwordHash = await bcrypt.hash(helper.initialUser.password, saltRounds)
+  let userObject = new User({
+    username: helper.initialUser.username,
+    name: helper.initialUser.name,
+    passwordHash
+  })
+
+  await userObject.save()
 })
 
 describe('when there is initally some blog posts saved', () => {
@@ -36,7 +50,18 @@ describe('when there is initally some blog posts saved', () => {
 })
 
 describe('addition of a new blogpost', () => {
-  test('succeeds with valid data', async () => {
+  test('succeeds for logged in user with valid data', async () => {
+    const credentials = {
+      username: helper.initialUser.username,
+      password: helper.initialUser.password
+    }
+
+    const loginResponse = await api
+      .post('/api/login')
+      .send(credentials)
+
+    const authToken = loginResponse.body.token
+
     const newBlog = {
       title: "new blogpost",
       author: "author mcAuthorFace",
@@ -47,6 +72,7 @@ describe('addition of a new blogpost', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
+      .set({ Authorization:`bearer ${authToken}`})
       .expect(200)
       .expect('Content-Type', /application\/json/)
 
@@ -54,6 +80,7 @@ describe('addition of a new blogpost', () => {
 
     const contents = response.body.map(r => {
       delete r.id
+      delete r.user
       return r
     })
 
@@ -61,7 +88,18 @@ describe('addition of a new blogpost', () => {
     expect(contents).toContainEqual(newBlog)
   })
 
-  test('succeeds if "likes" property is omitted from request: "likes" defaults to 0', async () => {
+  test('succeeds for a logged in user if "likes" property is omitted from request: "likes" defaults to 0', async () => {
+    const credentials = {
+      username: helper.initialUser.username,
+      password: helper.initialUser.password
+    }
+
+    const loginResponse = await api
+      .post('/api/login')
+      .send(credentials)
+
+    const authToken = loginResponse.body.token
+
     const newBlog = {
       title: "new blogpost",
       author: "author mcAuthorFace",
@@ -71,11 +109,15 @@ describe('addition of a new blogpost', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
+      .set({ Authorization:`bearer ${authToken}`})
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
 
     const response = await api.get('/api/blogs')
 
     const contents = response.body.map(r => {
       delete r.id
+      delete r.user
       return r
     })
 
@@ -83,7 +125,18 @@ describe('addition of a new blogpost', () => {
     expect(contents).toContainEqual({...newBlog, likes: 0})
   })
 
-  test('fails with status code 400 if title / url properties are omitted', async () => {
+  test('fails with status code 400 for a logged in user if title / url properties are omitted', async () => {
+    const credentials = {
+      username: helper.initialUser.username,
+      password: helper.initialUser.password
+    }
+
+    const loginResponse = await api
+      .post('/api/login')
+      .send(credentials)
+
+    const authToken = loginResponse.body.token
+
     const newBlog = {
       author: "author mcAuthorFace",
       likes: 69
@@ -92,45 +145,25 @@ describe('addition of a new blogpost', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
+      .set({ Authorization:`bearer ${authToken}`})
       .expect(400)
   })
-})
 
-describe('deletion of a blog post', () => {
-  test('succeeds with status code 204 if valid id', async () => {
-    const blogsAtStart = await helper.blogsInDb()
-    const blogToDelete = await blogsAtStart[0]
-
-    await api
-      .delete(`/api/blogs/${blogToDelete.id}`)
-      .expect(204)
-
-    const blogsAtEnd = await helper.blogsInDb()
-    expect(blogsAtEnd).toHaveLength(blogsAtStart.length -1)
-    const blogIds = blogsAtEnd.map(blog => blog.id)
-    expect(blogIds).not.toContain(blogToDelete.id)
-  })
-})
-
-describe('updating a blog post', () => {
-  test('succeeds with valid data', async () => {
-    const blogsAtStart = await helper.blogsInDb()
-    const blogToUpdate = await blogsAtStart[0]
-    const update = {likes: blogToUpdate.likes + 10}
+  test('fails with status code 401 if auth token is not provided', async () => {
+    const newBlog = {
+      title: "new blogpost",
+      author: "author mcAuthorFace",
+      url: "www.someBlogPost.com",
+      likes: 69
+    }
 
     await api
-      .put(`/api/blogs/${blogToUpdate.id}`)
-      .send(update)
-      .expect(204)
-
-    const response = await api.get('/api/blogs')
-    const updatedBlog = response.body.filter(blog => blog.id === blogToUpdate.id)[0]
-    expect(updatedBlog.likes).toEqual(blogToUpdate.likes + 10)
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(401)
+      .expect('Content-Type', /application\/json/)
   })
 })
-
-
-
 
 afterAll(() => {
   mongoose.connection.close()

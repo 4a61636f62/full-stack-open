@@ -1,27 +1,48 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
+const User = require('../models/user')
+const jwt = require('jsonwebtoken')
+const userExtractor = require('../utils/middleware').userExtractor
 
 blogsRouter.get('/', async (request, response) => {
- blogs = await Blog.find({})
+ const blogs = await Blog.find({}).populate('user', { username: 1, name: 1})
   response.json(blogs)
 })
 
-blogsRouter.post('/', async (request, response) => {
+blogsRouter.post('/', userExtractor, async (request, response) => {
   const body = request.body
+  const user = request.user
 
   const blog = new Blog({
     title: body.title,
     author: body.author,
+    user: user._id,
     url: body.url,
     likes: body.likes
   })
 
   const savedBlog = await blog.save()
+  user.blogs = user.blogs.concat(savedBlog._id)
+  await user.save()
+
   response.json(savedBlog)
 })
 
-blogsRouter.delete('/:id', async (request, response) => {
-  await Blog.findByIdAndRemove(request.params.id)
+blogsRouter.delete('/:id', userExtractor, async (request, response) => {
+  const decodedToken = jwt.verify(request.token, process.env.SECRET)
+
+  const blogToDelete = await Blog.findById(request.params.id)
+  if (!blogToDelete) {
+    return response.status(401).end()
+  }
+
+  if (!(blogToDelete.user === request.user._id)) {
+    return response.status(401).json({
+      error: 'blog can only be deleted by owner'
+    })
+  }
+
+  await Blog.deleteOne(blogToDelete)
   response.status(204).end()
 })
 
