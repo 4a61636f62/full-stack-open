@@ -2,38 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3c25014-9ce1-4c7a-8d69-d443af6874a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../notes/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/notes.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/db.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/components/Note.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/components/Notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../notes/src/services/notes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../part3/backend/requests.rest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/components/LoginForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/components/NewBlogForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/components/Notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/services/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/components/Blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/components/Blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/services/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part5/bloglist-frontend/src/services/blogs.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +36,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a3c25014-9ce1-4c7a-8d69-d443af6874a1" name="Default Changelist" comment="" />
@@ -64,7 +45,11 @@
       <option name="presentableId" value="Default" />
       <updated>1620033917578</updated>
       <workItem from="1620033919076" duration="2000" />
+      <workItem from="1620486054075" duration="1223000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

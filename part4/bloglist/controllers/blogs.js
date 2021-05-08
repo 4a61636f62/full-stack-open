@@ -29,14 +29,12 @@ blogsRouter.post('/', userExtractor, async (request, response) => {
 })
 
 blogsRouter.delete('/:id', userExtractor, async (request, response) => {
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
   const blogToDelete = await Blog.findById(request.params.id)
   if (!blogToDelete) {
     return response.status(401).end()
   }
 
-  if (!(blogToDelete.user === request.user._id)) {
+  if (!(blogToDelete.user.toString() === request.user._id.toString())) {
     return response.status(401).json({
       error: 'blog can only be deleted by owner'
     })
