@@ -10,23 +10,21 @@ const Blog = ({ blog, handleLike, ownedByUser, handleDelete }) => {
     marginBottom: 5
   }
 
+  const showWhenView = { display: view ? '' : 'none' }
+
   return (
     <div style={blogStyle}>
-      {blog.title}
+      {blog.title} {blog.author}
       <button onClick={() => setView(!view)}>{view ? 'hide' : 'view'}</button>
-      {view
-        ? <div>
+        <div className='toggleableContent' style={showWhenView}>
             <p>{blog.url}</p>
             <label>{blog.likes}</label>
-            <button onClick={handleLike}>like</button>
+            <button className = 'likeButton' onClick={handleLike}>like</button>
             {ownedByUser
               ? <button onClick={handleDelete}>delete</button>
               : null
             }
-            <p>{blog.author}</p>
           </div>
-        : null
-      }
     </div>
   )
 }
