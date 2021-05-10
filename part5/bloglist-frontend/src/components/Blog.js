@@ -13,13 +13,13 @@ const Blog = ({ blog, handleLike, ownedByUser, handleDelete }) => {
   const showWhenView = { display: view ? '' : 'none' }
 
   return (
-    <div style={blogStyle}>
+    <div data-cy='blog' style={blogStyle}>
       {blog.title} {blog.author}
       <button onClick={() => setView(!view)}>{view ? 'hide' : 'view'}</button>
         <div className='toggleableContent' style={showWhenView}>
             <p>{blog.url}</p>
-            <label>{blog.likes}</label>
-            <button className = 'likeButton' onClick={handleLike}>like</button>
+            <label data-cy='likes'>{blog.likes}</label>
+            <button data-cy = 'likeButton' onClick={handleLike}>like</button>
             {ownedByUser
               ? <button onClick={handleDelete}>delete</button>
               : null
