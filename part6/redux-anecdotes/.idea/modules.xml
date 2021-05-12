@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/redux-anecdotes.iml" filepath="$PROJECT_DIR$/.idea/redux-anecdotes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../redux-notes/.idea/redux-notes.iml" filepath="$PROJECT_DIR$/../redux-notes/.idea/redux-notes.iml" />
+    </modules>
+  </component>
+</project>
