@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../../part4/bloglist/.idea/bloglist.iml" filepath="$PROJECT_DIR$/../../part4/bloglist/.idea/bloglist.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bloglist-frontend.iml" filepath="$PROJECT_DIR$/.idea/bloglist-frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../part2/part2-notes/.idea/part2-notes.iml" filepath="$PROJECT_DIR$/../../part2/part2-notes/.idea/part2-notes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../part3/part3-notes-backend/.idea/part3-notes-backend.iml" filepath="$PROJECT_DIR$/../../part3/part3-notes-backend/.idea/part3-notes-backend.iml" />
     </modules>
   </component>
 </project>

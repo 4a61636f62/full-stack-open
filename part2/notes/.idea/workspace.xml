@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b6f69a4e-4302-44ad-902e-f65194ece2f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../part3/notes-backend/controllers/testing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part3/notes-backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part3/notes-backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part3/notes-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../part3/notes-backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part3/notes-backend/utils/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../part3/notes-backend/utils/config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1rvV4ch3RDx2af614dabSbLnBPZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../part2-notes" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Jest.Note app.login form can be opened">
+    <configuration name="Note app.login form can be opened" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/cypress/integration/note_app.spec.js" />
+      <test-names>
+        <test-name value="Note app" />
+        <test-name value="login form can be opened" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="&lt;Toggleable /&gt;" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/components/Toggleable.test.js" />
+      <test-names>
+        <test-name value="&lt;Toggleable /&gt;" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="&lt;Toggleable /&gt;.after clicking the button, children are displayed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/components/Toggleable.test.js" />
+      <test-names>
+        <test-name value="&lt;Toggleable /&gt;" />
+        <test-name value="after clicking the button, children are displayed" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="clicking the button calls event handler once" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/components/Note.test.js" />
+      <test-names>
+        <test-name value="clicking the button calls event handler once" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renders content" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/components/Note.test.js" />
+      <test-names>
+        <test-name value="renders content" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Note app.login form can be opened" />
+        <item itemvalue="Jest.&lt;Toggleable /&gt;" />
+        <item itemvalue="Jest.&lt;Toggleable /&gt;.after clicking the button, children are displayed" />
+        <item itemvalue="Jest.clicking the button calls event handler once" />
+        <item itemvalue="Jest.renders content" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6f69a4e-4302-44ad-902e-f65194ece2f8" name="Default Changelist" comment="" />
+      <created>1619856359876</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619856359876</updated>
+      <workItem from="1619856361183" duration="1238000" />
+      <workItem from="1619859922031" duration="2020000" />
+      <workItem from="1619865112849" duration="2094000" />
+      <workItem from="1619898195302" duration="3952000" />
+      <workItem from="1619986353161" duration="15000" />
+      <workItem from="1620471365776" duration="2575000" />
+      <workItem from="1620488330098" duration="2625000" />
+      <workItem from="1620503180719" duration="80000" />
+      <workItem from="1620503261481" duration="2168000" />
+      <workItem from="1620550682027" duration="2394000" />
+      <workItem from="1620631886890" duration="2820000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
