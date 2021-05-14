@@ -1,11 +1,9 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
 const userExtractor = require('../utils/middleware').userExtractor
 
 blogsRouter.get('/', async (request, response) => {
- const blogs = await Blog.find({}).populate('user', { username: 1, name: 1})
+  const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
   response.json(blogs)
 })
 
@@ -18,14 +16,24 @@ blogsRouter.post('/', userExtractor, async (request, response) => {
     author: body.author,
     user: user._id,
     url: body.url,
-    likes: body.likes
+    likes: body.likes ? body.likes : 0,
+    comments: []
   })
 
   const savedBlog = await blog.save()
   user.blogs = user.blogs.concat(savedBlog._id)
   await user.save()
 
-  response.json(savedBlog)
+  savedBlog.populate({
+    path: 'user',
+    select: 'name username'
+  }, (err, doc) => {
+    if (!err) {
+      response.json(doc)
+    } else {
+      response.status(500).end()
+    }
+  })
 })
 
 blogsRouter.delete('/:id', userExtractor, async (request, response) => {
@@ -49,6 +57,14 @@ blogsRouter.put('/:id', async (request, response) => {
     likes: request.body.likes
   }
   await Blog.findByIdAndUpdate(request.params.id, update)
+  response.status(204).end()
+})
+
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const blog = await Blog.findById(request.params.id)
+  const comment = request.body.comment
+  blog.comments = blog.comments.concat(comment)
+  await blog.save()
   response.status(204).end()
 })
 
