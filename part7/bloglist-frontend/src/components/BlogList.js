@@ -2,7 +2,13 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs, likeBlog, removeBlog } from '../reducers/blogsReducer'
 import Blog from './Blog'
-import { Route, Switch, Link, useRouteMatch, useHistory } from 'react-router-dom'
+import { Route, Switch, useRouteMatch, useHistory, Link } from 'react-router-dom'
+
+import {
+  Anchor,
+  Box,
+  Card, CardBody, CardHeader, Grid
+} from 'grommet'
 
 const BlogList = () => {
   const dispatch = useDispatch()
@@ -17,14 +23,6 @@ const BlogList = () => {
   const blog = match
     ? blogs.find(blog => blog.id === match.params.id)
     : null
-
-  const style = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5
-  }
 
   return (
     <Switch>
@@ -43,15 +41,25 @@ const BlogList = () => {
         }
       </Route>
       <Route path='/'>
-        <div>
+        <Box margin='medium' align='center'>
+          <Grid
+            columns={{ count: 'fit', size: 'small' }}
+            responsive
+            fill
+            gap='small'
+          >
           {blogs.map(blog =>
-            <div key={blog.id} style={style}>
-              <Link to={`/blogs/${blog.id}`}>
-                  <p>{blog.title}</p>
-              </Link>
-            </div>
+            <Card key={blog.id}>
+              <CardHeader pad ='small' >
+                <Anchor as={Link} to={`/blogs/${blog.id}`} label={blog.title} />
+              </CardHeader>
+              <CardBody pad='small'>
+                by {blog.author}
+              </CardBody>
+            </Card>
           )}
-        </div>
+          </Grid>
+        </Box>
       </Route>
     </Switch>
   )

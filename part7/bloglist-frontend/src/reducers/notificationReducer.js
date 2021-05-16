@@ -1,6 +1,6 @@
 const initialState = {
   message: '',
-  color: '',
+  error: false,
   timeoutID: null
 }
 
@@ -12,13 +12,13 @@ const notificationReducer = (state = initialState, action) => {
     case SET_NOTIFICATION:
       return action.data
     case CLEAR_NOTIFICATION:
-      return initialState
+      return { ...initialState, error: state.error }
     default:
       return state
   }
 }
 
-export const setNotification = (message, color, seconds) => {
+export const setNotification = (message, error = false, seconds = 10) => {
   return (dispatch, getState) => {
     const currentTimeoutID = getState.timeoutID
     if (currentTimeoutID) {
@@ -29,7 +29,7 @@ export const setNotification = (message, color, seconds) => {
     }, seconds * 1000)
     dispatch({
       type: SET_NOTIFICATION,
-      data: { message, color, timeoutID }
+      data: { message, error, timeoutID }
     })
   }
 }

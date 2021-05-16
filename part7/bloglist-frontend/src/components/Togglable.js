@@ -1,11 +1,13 @@
 import React, { useState, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
+import {
+  Box,
+  Button,
+  Collapsible
+} from 'grommet'
 
 const Togglable = React.forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false)
-
-  const hideWhenVisible = { display: visible ? 'none' : '' }
-  const showWhenVisible = { display: visible ? '' : 'none' }
 
   const toggleVisibility = () => {
     setVisible(!visible)
@@ -18,15 +20,20 @@ const Togglable = React.forwardRef((props, ref) => {
   })
 
   return (
-    <div>
-      <div style={hideWhenVisible}>
-        <button onClick={toggleVisibility}>{props.buttonLabel}</button>
-      </div>
-      <div style={showWhenVisible}>
+    <Box
+      align='center'
+      pad='medium'
+    >
+      <Collapsible open={visible}>
         {props.children}
-        <button onClick={toggleVisibility}>cancel</button>
-      </div>
-    </div>
+        <Button onClick={toggleVisibility} label='cancel' />
+      </Collapsible>
+      {!visible && (
+        <Box width='small'>
+          <Button onClick={toggleVisibility} label={props.buttonLabel}/>
+        </Box>
+      )}
+    </Box>
   )
 })
 

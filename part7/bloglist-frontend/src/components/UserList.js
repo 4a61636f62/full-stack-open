@@ -5,6 +5,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { initiateUsers } from '../reducers/usersReducer'
 import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
 
+import {
+  Anchor,
+  Box,
+  Table, TableBody, TableCell, TableHeader, TableRow
+} from 'grommet'
+
 const UserList = () => {
   const users = useSelector(state => state.users)
   const dispatch = useDispatch()
@@ -30,27 +36,34 @@ const UserList = () => {
         {user ? <User name={user.name} blogs={user.blogs}/> : null }
       </Route>
       <Route path='/users/'>
-        <div>
-          <h2>Users</h2>
-          <table>
-            <thead>
-            <tr>
-              <th></th>
-              <th>blogs created</th>
-            </tr>
-            </thead>
-            <tbody>
+        <Box align='center' pad='medium'>
+          <Table>
+            <TableHeader>
+            <TableRow>
+              <TableCell>
+                Name
+              </TableCell>
+              <TableCell>
+                Blogs Created
+              </TableCell>
+            </TableRow>
+            </TableHeader>
+            <TableBody>
             {users.map(u =>
-              <tr key={u.username}>
-                <Link to={`/users/${u.username}`}>
-                  <td>{u.name}</td>
-                </Link>
-                <td>{u.blogs.length}</td>
-              </tr>
+              <TableRow key={u.username}>
+                <TableCell>
+                  <Anchor as={Link} to={`/users/${u.username}`}>
+                    {u.name}
+                  </Anchor>
+                </TableCell>
+                <TableCell>
+                  {u.blogs.length}
+                </TableCell>
+              </TableRow>
             )}
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
+        </Box>
       </Route>
     </Switch>
 

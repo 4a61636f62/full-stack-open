@@ -14,6 +14,11 @@ import { setNotification } from './reducers/notificationReducer'
 import { addBlog } from './reducers/blogsReducer'
 import { loadUser, logout } from './reducers/userReducer'
 
+import {
+  Grommet
+} from 'grommet'
+import theme from './theme'
+
 const App = () => {
   const dispatch = useDispatch()
 
@@ -23,34 +28,22 @@ const App = () => {
 
   const user = useSelector(state => state.user)
 
-  const notify = (message, color) => {
-    dispatch(setNotification(message, color, 10))
-  }
-
-  const handleLogout = () => {
-    dispatch(logout())
-  }
-
   const blogFormRef = useRef()
   const addNewBlog = async (newBlog) => {
     try {
       await dispatch(addBlog(newBlog, user.token))
       blogFormRef.current.toggleVisibility()
-      notify(`a new blog ${newBlog.title} by ${newBlog.author} added`, 'green')
+      dispatch(setNotification(`a new blog ${newBlog.title} by ${newBlog.author} added`))
     } catch (error) {
-      notify(error.message, 'red')
+      dispatch(setNotification(error.message, true))
     }
   }
 
   return (
-    <div>
-      {user
-        ? <div>
-            <Navbar name={user.name} handleLogout={handleLogout}/>
-            <h2>blog app</h2>
-          </div>
-        : <h2>Log in to application</h2>
-      }
+    <Grommet full theme={theme}>
+      {user && (
+        <Navbar name={user.name} handleLogout={() => dispatch(logout())}/>
+      )}
       <Notification />
       <Switch>
         <Route path='/login'>
@@ -69,15 +62,15 @@ const App = () => {
         <Route path='/'>
           {user
             ? <div>
+              <BlogList />
               <Togglable buttonLabel='create new' ref={blogFormRef}>
                 <NewBlogForm addNewBlog={addNewBlog}/>
               </Togglable>
-              <BlogList />
             </div>
             : <Redirect to='/login' />}
         </Route>
       </Switch>
-    </div>
+    </Grommet>
   )
 }
 

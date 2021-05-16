@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import {
+  Box
+} from 'grommet'
+
 const User = ({ name, blogs }) => (
-  <div>
+  <Box align='center'>
     <h2>{name}</h2>
     <h3>added blogs</h3>
     <ul>
@@ -10,7 +14,7 @@ const User = ({ name, blogs }) => (
       <li key={blog.id}>{blog.title}</li>
     ))}
     </ul>
-  </div>
+  </Box>
 )
 
 User.propTypes = {

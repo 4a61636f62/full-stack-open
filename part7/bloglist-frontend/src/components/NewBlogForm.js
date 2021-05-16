@@ -1,52 +1,55 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { useField } from '../hooks'
+import {
+  Box,
+  Button,
+  Form,
+  FormField,
+  TextInput
+} from 'grommet'
 
 const NewBlogForm = ({ addNewBlog }) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
+  const title = useField('text')
+  const author = useField('text')
+  const url = useField('url')
 
   const createBlog = (event) => {
     event.preventDefault()
     const blog = {
-      title,
-      author,
-      url
+      title: title.props.value,
+      author: author.props.value,
+      url: url.props.value
     }
     addNewBlog(blog)
   }
 
   return (
-    <div>
+    <Box
+      align='center'
+    >
         <h2>create new</h2>
-        <form onSubmit={createBlog}>
-          <div>
-              title:
-              <input
-                id='title'
-                value={title}
-                onChange={({ target }) => setTitle(target.value)}
+        <Form onSubmit={createBlog}>
+          <FormField label='Title'>
+              <TextInput
+                {...title.props}
               />
-          </div>
-          <div>
-              author:
-              <input
-                id='author'
-                value={author}
-                onChange={({ target }) => setAuthor(target.value)}
+          </FormField>
+          <FormField label='Author'>
+              <TextInput
+                {...author.props}
               />
-          </div>
-          <div>
-              url:
-              <input
-                id='url'
-                value={url}
-                onChange={({ target }) => setUrl(target.value)}
+          </FormField>
+          <FormField label='URL'>
+              <TextInput
+                {...url.props}
               />
-          </div>
-          <button id='createBlog' type='submit'>create</button>
-        </form>
-    </div>
+          </FormField>
+          <Box margin={{ top: 'medium', bottom: 'medium' }}>
+            <Button id='createBlog' type='submit' label='create' />
+          </Box>
+        </Form>
+    </Box>
   )
 }
 

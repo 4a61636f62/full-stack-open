@@ -4,6 +4,13 @@ import { useDispatch } from 'react-redux'
 import { addComment } from '../reducers/blogsReducer'
 import PropTypes from 'prop-types'
 
+import {
+  Box,
+  Button,
+  Form,
+  TextArea
+} from 'grommet'
+
 const CommentForm = ({ blog }) => {
   const comment = useField('text')
   const dispatch = useDispatch()
@@ -15,10 +22,12 @@ const CommentForm = ({ blog }) => {
   }
 
   return (
-    <form onSubmit={submit}>
-      <input {...comment.props} />
-      <button type='submit'>add comment</button>
-    </form>
+    <Form onSubmit={submit}>
+      <Box align='center' width='medium' gap='medium'>
+        <TextArea {...comment.props} />
+        <Button type='submit' label='submit' />
+      </Box>
+    </Form>
   )
 }
 
