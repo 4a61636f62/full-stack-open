@@ -8,7 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="bloglist" />
     <orderEntry type="module" module-name="part3-notes-backend" />
     <orderEntry type="module" module-name="part2-notes" />
   </component>
