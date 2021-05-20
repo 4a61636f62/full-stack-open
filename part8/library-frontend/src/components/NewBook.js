@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { ADD_BOOK, ALL_BOOKS, ALL_GENRES } from '../queries'
+import { ADD_BOOK } from '../queries'
 
-const NewBook = (props) => {
+const NewBook = ({ show, updateCacheWith }) => {
   const [title, setTitle] = useState('')
-  const [author, setAuhtor] = useState('')
+  const [author, setAuthor] = useState('')
   const [published, setPublished] = useState('')
   const [genre, setGenre] = useState('')
   const [genres, setGenres] = useState([])
@@ -14,47 +14,11 @@ const NewBook = (props) => {
       console.log(error)
     }),
     update: (store, response) => {
-      try {
-        const dataInStore = store.readQuery({ query: ALL_BOOKS })
-        store.writeQuery({
-          query: ALL_BOOKS,
-          data: {
-            ...dataInStore,
-            allBooks: [...dataInStore.allBooks, response.data.addBook]
-          }
-        })
-      } catch (error) {}
-
-      const genres = response.data.addBook.genres
-      genres.forEach(genre => {
-        try {
-          const dataInStore = store.readQuery({ query: ALL_BOOKS, variables: { genre } })
-          store.writeQuery({
-            query: ALL_BOOKS,
-            variables: { genre },
-            data: {
-              ...dataInStore,
-              allBooks: [...dataInStore.allBooks, response.data.addBook]
-            }
-          })
-        } catch(error) {}
-
-        try {
-          const dataInStore = store.readQuery({query: ALL_GENRES})
-          store.writeQuery({
-            query: ALL_GENRES,
-            data: {
-              ...dataInStore,
-              allGenres: [...new Set([...dataInStore.allGenres, ...response.data.addBook.genres])]
-            }
-          })
-        } catch (error) {}
-      })
-
+      updateCacheWith(response.data.addBook)
     }
   })
 
-  if (!props.show) {
+  if (!show) {
     return null
   }
 
@@ -64,7 +28,7 @@ const NewBook = (props) => {
 
     setTitle('')
     setPublished('')
-    setAuhtor('')
+    setAuthor('')
     setGenres([])
     setGenre('')
   }
@@ -88,7 +52,7 @@ const NewBook = (props) => {
           author
           <input
             value={author}
-            onChange={({ target }) => setAuhtor(target.value)}
+            onChange={({ target }) => setAuthor(target.value)}
           />
         </div>
         <div>

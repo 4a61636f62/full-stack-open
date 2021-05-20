@@ -1,4 +1,4 @@
-const { UserInputError, AuthenticationError } = require('apollo-server')
+const { UserInputError, AuthenticationError, PubSub } = require('apollo-server')
 const Book = require('./datasources/models/book')
 const Author = require('./datasources/models/author')
 const User = require('./datasources/models/user')
@@ -6,18 +6,17 @@ const jwt = require('jsonwebtoken')
 
 const JWT_SECRET = require('./config').JWT_SECRET
 
+const pubsub = new PubSub()
+
 const resolvers = {
   Author: {
-    bookCount: (parent) => {
-      return Book.countDocuments({ author: parent.id })
-    }
+    bookCount: (parent) => parent.books.length
   },
 
   Query: {
     bookCount: () => Book.collection.countDocuments(),
     authorCount: () => Author.collection.countDocuments(),
     allBooks: (_, args) => {
-      console.log(args.genre)
       return args.genre
         ? Book.find({ genres: { $in: [args.genre]}}).populate('author')
         : Book.find({}).populate('author')
@@ -46,10 +45,12 @@ const resolvers = {
       }
 
       const book = new Book({ ...args, author })
+      author.books = author.books.concat(book)
 
       try {
         await book.save()
         await author.save()
+        pubsub.publish('BOOK_ADDED', { bookAdded: book })
         return book
       } catch (error) {
         throw new UserInputError(error.message)
@@ -97,6 +98,12 @@ const resolvers = {
       }
 
       return { value: jwt.sign(userForToken, JWT_SECRET)}
+    }
+  },
+
+  Subscription: {
+    bookAdded: {
+      subscribe: () => pubsub.asyncIterator(['BOOK_ADDED'])
     }
   }
 }
