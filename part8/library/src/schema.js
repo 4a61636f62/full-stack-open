@@ -36,6 +36,7 @@ const typeDefs = gql`
         ): [Book]
         allAuthors: [Author]
         me: User
+        allGenres: [String]
     }
 
     type Mutation{

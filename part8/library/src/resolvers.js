@@ -25,8 +25,14 @@ const resolvers = {
     allAuthors: async () => Author.find({}),
     me: (_, __, context) => {
       return context.currentUser
+    },
+    allGenres: async () => {
+      const books = await Book.find({})
+      const genres = books.map(book => book.genres).flat(1)
+      return [...new Set(genres)]
     }
-  },
+  }
+  ,
 
   Mutation: {
     addBook: async (_, args, context) => {
