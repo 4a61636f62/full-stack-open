@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Patient } from "../types";
 import axios from "axios";
 import { apiBaseUrl } from "../constants";
-import { useStateValue } from "../state";
+import {updatePatient, useStateValue} from "../state";
 
 const isString = (text: unknown): text is string => {
    return typeof text === 'string';
@@ -25,12 +25,11 @@ const PatientPage = () => {
    React.useEffect(() => {
        const fetchPatient = async (id: string) => {
            const { data: fetchedPatient } = await axios.get<Patient>(`${apiBaseUrl}/patients/${id}`);
-           dispatch({ type: "UPDATE_PATIENT", payload: fetchedPatient });
+           dispatch(updatePatient(fetchedPatient));
        };
        void fetchPatient(id);
    }, [id]);
 
-   console.log('here');
    return patient ? (
        <div>
            <h2>{patient.name}<i className={patient.gender === 'male' ? 'mars icon' : 'venus icon'} /></h2>
