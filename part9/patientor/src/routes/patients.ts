@@ -4,7 +4,7 @@ import { toNewPatient } from "../utils";
 
 const patientsRouter = express.Router();
 
-patientsRouter.get('/:id', (req, res) => {
+patientsRouter.get("/:id", (req, res) => {
     const patient = patientService.getPatient(req.params.id);
     if (patient) {
         res.json(
@@ -13,13 +13,13 @@ patientsRouter.get('/:id', (req, res) => {
     }
 });
 
-patientsRouter.get('/', (_req, res) => {
+patientsRouter.get("/", (_req, res) => {
     res.json(
         patientService.getNonSensitivePatients()
     );
 });
 
-patientsRouter.post('/', (req, res) => {
+patientsRouter.post("/", (req, res) => {
     const newPatient = toNewPatient(req.body);
     res.json(newPatient);
 });
