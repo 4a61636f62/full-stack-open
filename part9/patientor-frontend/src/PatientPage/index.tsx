@@ -4,9 +4,10 @@ import { Patient } from "../types";
 import axios from "axios";
 import { apiBaseUrl } from "../constants";
 import {updatePatient, useStateValue} from "../state";
+import Entry from "./entry";
 
 const isString = (text: unknown): text is string => {
-   return typeof text === 'string';
+   return typeof text === "string";
 };
 
 const parseID = (params: { id?: unknown }): string => {
@@ -32,9 +33,15 @@ const PatientPage = () => {
 
    return patient ? (
        <div>
-           <h2>{patient.name}<i className={patient.gender === 'male' ? 'mars icon' : 'venus icon'} /></h2>
+           <h2>{patient.name}<i className={patient.gender === "male" ? "mars icon" : "venus icon"} /></h2>
            <p>ssn: {patient.ssn}</p>
            <p>occupation: {patient.occupation}</p>
+           <h3>Entries</h3>
+           {patient.entries
+               ?
+               patient.entries.map(entry => <Entry key={entry.id} entry={entry}/>)
+               : null
+           }
        </div>
    ): null;
 };

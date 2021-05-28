@@ -20,7 +20,14 @@
     ],
     "@typescript-eslint/no-explicit-any": 1,
     "no-case-declarations": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "@typescript-eslint/quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ]
   },
   "settings": {
     "react": {

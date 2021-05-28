@@ -46,7 +46,7 @@ export const TextField= ({
   <Form.Field>
     <label>{label}</label>
     <Field placeholder={placeholder} {...field} />
-    <div style={{ color:'red' }}>
+    <div style={{ color:"red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>
@@ -67,7 +67,7 @@ export const NumberField = ({ field, label, min, max } : NumberProps ) => (
     <label>{label}</label>
     <Field {...field} type='number' min={min} max={max} />
 
-    <div style={{ color:'red' }}>
+    <div style={{ color:"red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>
